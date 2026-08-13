@@ -1,118 +1,203 @@
-<!DOCTYPE html>
-<html lang="km">
-<head>
-  <!-- 🚨 HUOKAING THARA BANK & ISP EXECUTIVE ANNOUNCEMENT -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OFFICIAL ANNOUNCEMENT | HUOKAING THARA BANK & ISP</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="isp_announment.jpg" type="image/jpeg" />
-</head>
-<body>
+// =================================================================
+// MATRIX CANVAS BACKGROUND (Streaming SENG CHHAT, MEN & HUOKAING THARA)
+// =================================================================
+(function initHUOKAINGTHARABackground() {
+  const canvas = document.getElementById('hologram-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-  <!-- Matrix Canvas Background -->
-  <canvas id="hologram-canvas"></canvas>
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
-  <div class="container-full">
-    <div class="hologram-container">
-      
-      <!-- Header -->
-      <header>
-        <div class="brand-badge">
-          <div class="node-icon">
-            <div class="ring-cyan"></div>
-            <div class="ring-gold"></div>
-          </div>
-          <div>
-            <span class="est-tag">HUOKAING THARA BANK &amp; ISP</span>
-            <h1 class="header-title">EXECUTIVE APPOINTMENTS &amp; LAUNCH DECREE</h1>
-          </div>
-        </div>
-        <div id="epoch-stabilizer">
-          LAUNCH COUNTDOWN: <span id="countdown">Calculating...</span>
-        </div>
-      </header>
+  const phrase = "HUOKAING THARA BANK ISP SENG CHHAT MEN CEO DIRECTOR CYBERSECURITY ";
+  const fontSize = 16;
+  const columns = Math.floor(canvas.width / fontSize);
+  const drops = Array(columns).fill(1);
+  const charOffsets = Array.from({ length: columns }, () => Math.floor(Math.random() * phrase.length));
 
-      <!-- Hero Banner -->
-      <section class="hero-fullscreen">
-        <img src="isp_announment.jpg" alt="HUOKAING THARA Opening" class="img-full-cover" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200'">
-        <div class="hero-overlay">
-          <h1>HUOKAING THARA BANK &amp; ISP</h1>
-          <p>Official Executive Leadership &amp; Operational Launch Decree</p>
-        </div>
-      </section>
+  function drawMatrix() {
+    ctx.fillStyle = 'rgba(3, 7, 18, 0.15)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      <!-- Voice AI Audio Controls -->
-      <section class="voice-controls">
-        <h2>🎙️ Voice Presentation Reader</h2>
-        <div class="visualizer-box">
-          <div class="waveform-bar"></div>
-          <div class="waveform-bar"></div>
-          <div class="waveform-bar"></div>
-          <div class="waveform-bar"></div>
-          <div class="waveform-bar"></div>
-          <div class="waveform-bar"></div>
-        </div>
-        <div class="voice-btn-group">
-          <button class="voice-btn" onclick="startSequentialPresentation('km')">🇰🇭 Read in Khmer</button>
-          <button class="voice-btn" onclick="startSequentialPresentation('en')">🇺🇸 Read in English</button>
-          <button class="voice-btn stop-btn" onclick="stopVoiceAI()">🛑 Stop Reader</button>
-        </div>
-        <div id="voice-transcript" class="transcript-box">
-          System Standby. Click any button above to read the official executive appointments.
-        </div>
-      </section>
+    ctx.fillStyle = '#00f0ff';
+    ctx.font = fontSize + 'px monospace';
 
-      <!-- Executive Decree Cards -->
-      <section class="announcement-grid">
-        
-        <!-- Khmer Declaration -->
-        <div class="decree-card khmer-card">
-          <div class="decree-title">🇰🇭 សេចក្តីប្រកាសព័ត៌មានផ្លូវការ (Khmer)</div>
-          <div class="decree-body">
-            លោក <strong>ហួ</strong> និងគណៈគ្រប់គ្រង <strong>ធនាគារ ហួកាំង ថារ៉ា (HUOKAING THARA BANK)</strong> មានកិត្តិយសសូមជូនដំណឹងជាផ្លូវការអំពីការសម្រេចចិត្តក្នុងការបើកដំណើរការ <strong>HUOKAING THARA BANK</strong> និង <strong>HUOKAING THARA ISP</strong> ជាផ្លូវការនៅពេលខាងមុខឆាប់ៗនេះ!
-            
-            <div class="director-highlight">
-              👔 <strong>លោក SENG CHHAT (សេង ឆាត)</strong> ត្រូវបានតែងតាំងជា <strong>Director (នាយក)</strong> ទទួលបន្ទុកដឹកនាំ និងគ្រប់គ្រងប្រតិបត្តិការទូទៅរបស់ក្រុមហ៊ុន។
-            </div>
+    for (let i = 0; i < drops.length; i++) {
+      const charIndex = (charOffsets[i] + drops[i]) % phrase.length;
+      const text = phrase[charIndex];
+      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-            <div class="cyber-highlight">
-              🛡️📈 <strong>លោក HUOKAING THARA (ហួកាំង ថារ៉ា)</strong> ត្រូវបានតែងតាំងជា <strong>Chief Cybersecurity Officer & Head of Marketing (ប្រធានផ្នែកសន្តិសុខសុវត្ថិភាពឌីជីថល និងប្រធានផ្នែកទីផ្សារ)</strong> ទទួលបន្ទុកការពារប្រព័ន្ធសុវត្ថិភាពអុីនធើណេត ប្រព័ន្ធធនាគារ ព្រមទាំងគ្រប់គ្រងយុទ្ធសាស្ត្រទីផ្សារទាំងស្រុង។
-            </div>
-            
-            <strong>HUOKAING THARA BANK & ISP</strong> ប្តេជ្ញាចិត្តយ៉ាងមុតមាំក្នុងការនាំមកជូននូវសេវាកម្មអុីនធើណេតល្បឿនលឿន និងប្រព័ន្ធធនាគារឌីជីថលប្រកបដោយសុវត្ថិភាពខ្ពស់បំផុត។
-          </div>
-        </div>
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+  }
+  setInterval(drawMatrix, 40);
+})();
 
-        <!-- English Declaration -->
-        <div class="decree-card">
-          <div class="decree-title">🇺🇸 Official Executive Decree (English)</div>
-          <div class="decree-body">
-            <strong>Mr. HUO</strong> and the Executive Board of <strong>HUOKAING THARA BANK</strong> are pleased to officially announce the upcoming grand launch of <strong>HUOKAING THARA BANK</strong> and <strong>HUOKAING THARA ISP</strong> in the near future!
-            
-            <div class="director-highlight">
-              👔 <span class="role-badge">Mr. SENG CHHAT</span> is formally appointed as <strong>Director</strong>, overseeing corporate governance, direction, and total operational execution.
-            </div>
+// =================================================================
+// AI VOICE PRESENTATION ENGINE (Updated with CEO Mr. Men)
+// =================================================================
+const announcementSpeech = [
+  {
+    langCode: 'km',
+    langName: 'Khmer',
+    locale: 'km-KH',
+    lines: [
+      "សេចក្តីប្រកាសព័ត៌មានផ្លូវការ ពីលោក ហួរ និងគណៈគ្រប់គ្រង ធនាគារ ហួកាំង ថារ៉ា។",
+      "អំពីការបើកដំណើរការ ធនាគារ ហួកាំង ថារ៉ា និង ហួកាំង ថារ៉ា អាយអេសភី ជាផ្លូវការ។",
+      "លោក ម៉ែន ត្រូវបានតែងតាំងជា នាយកប្រតិបត្តិ ឬ ស៊ីអ៊ីអូ។",
+      "លោក សេង ឆាត់ ត្រូវបានតែងតាំងជា នាយក។",
+      "លោក ហួកាំង ថារ៉ា ត្រូវបានតែងតាំងជា ប្រធានផ្នែកសន្តិសុខសុវត្ថិភាពឌីជីថល និងប្រធានផ្នែកទីផ្សារ។",
+      "ក្រុមហ៊ុន ហួកាំង ថារ៉ា ប្តេជ្ញាផ្តល់ជូននូវសេវាកម្មអុីនធើណេត និងប្រព័ន្ធធនាគារដែលមានសុវត្ថិភាពខ្ពស់បំផុត។"
+    ]
+  },
+  {
+    langCode: 'en',
+    langName: 'English',
+    locale: 'en-US',
+    lines: [
+      "Official announcement decided by Mr. HUO and the executive management of HUOKAING THARA BANK.",
+      "Regarding the upcoming grand launch of HUOKAING THARA BANK and HUOKAING THARA ISP.",
+      "Mr. MEN is appointed as Chief Executive Officer, or CEO.",
+      "Mr. SENG CHHAT is appointed as Director.",
+      "Mr. HUOKAING THARA is appointed as Chief Cybersecurity Officer and Head of Marketing.",
+      "HUOKAING THARA is committed to providing secure internet and digital banking services."
+    ]
+  }
+];
 
-            <div class="cyber-highlight">
-              🛡️📈 <span class="role-badge">Mr. HUOKAING THARA</span> is formally appointed as <strong>Chief Cybersecurity Officer & Head of Marketing</strong>, leading network defense, transaction security, and strategic market expansion.
-            </div>
+let currentLangIdx = 0;
+let currentLineIdx = 0;
+let isVoiceActive = false;
 
-            <strong>HUOKAING THARA BANK & ISP</strong> are committed to delivering secure, high-speed connectivity and advanced digital financial solutions.
-          </div>
-        </div>
+function highlightActiveButton(langCode) {
+  document.querySelectorAll('.voice-btn').forEach(btn => {
+    if (btn.getAttribute('onclick')?.includes(`'${langCode}'`)) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
 
-      </section>
+function speakNextLine() {
+  if (!isVoiceActive || !('speechSynthesis' in window)) return;
 
-      <!-- Live Telemetry Broadcast Log -->
-      <div class="telemetry-panel">
-        <h3>🔴 LIVE LOGS | Corporate Appointment Broadcast Feed</h3>
-        <ul id="feed-list">Initializing announcement telemetry nodes...</ul>
-      </div>
+  const currentLangObj = announcementSpeech[currentLangIdx];
 
-    </div>
-  </div>
+  if (currentLineIdx >= currentLangObj.lines.length) {
+    currentLineIdx = 0;
+    currentLangIdx = (currentLangIdx + 1) % announcementSpeech.length;
+    setTimeout(() => { speakNextLine(); }, 1000);
+    return;
+  }
 
-  <script src="app.js"></script>
-</body>
-</html>
+  const lineText = currentLangObj.lines[currentLineIdx];
+  const transcriptEl = document.getElementById('voice-transcript');
+  if (transcriptEl) {
+    transcriptEl.textContent = `[${currentLangObj.langName.toUpperCase()}] ${lineText}`;
+  }
+  highlightActiveButton(currentLangObj.langCode);
+
+  const utterance = new SpeechSynthesisUtterance(lineText);
+  utterance.lang = currentLangObj.locale;
+  utterance.rate = 0.95;
+
+  utterance.onend = function() {
+    currentLineIdx++;
+    if (isVoiceActive) setTimeout(speakNextLine, 350);
+  };
+
+  utterance.onerror = function() {
+    currentLineIdx++;
+    if (isVoiceActive) setTimeout(speakNextLine, 350);
+  };
+
+  speechSynthesis.speak(utterance);
+}
+
+function startSequentialPresentation(langCode) {
+  if (!('speechSynthesis' in window)) {
+    alert("Speech Synthesis API is not supported on this browser.");
+    return;
+  }
+  speechSynthesis.cancel();
+  isVoiceActive = true;
+
+  const targetIdx = announcementSpeech.findIndex(p => p.langCode === langCode);
+  currentLangIdx = targetIdx !== -1 ? targetIdx : 0;
+  currentLineIdx = 0;
+
+  speakNextLine();
+}
+
+function stopVoiceAI() {
+  isVoiceActive = false;
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  highlightActiveButton(null);
+  const transcriptEl = document.getElementById('voice-transcript');
+  if (transcriptEl) {
+    transcriptEl.textContent = "Voice reader stopped by user command.";
+  }
+}
+
+// =================================================================
+// COUNTDOWN TIMER (1 Year Target Timeline)
+// =================================================================
+const grandOpeningDate = Date.now() + (365 * 24 * 60 * 60 * 1000);
+function updateCountdown() {
+  const diff = grandOpeningDate - Date.now();
+  const countdownEl = document.getElementById('countdown');
+  if (!countdownEl) return;
+
+  if (diff <= 0) {
+    countdownEl.textContent = "GRAND OPENING ACTIVE!";
+    return;
+  }
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// =================================================================
+// LIVE TELEMETRY BROADCAST FEED (Includes CEO Mr. Men)
+// =================================================================
+const feedList = document.getElementById("feed-list");
+if (feedList) {
+  setInterval(() => {
+    const logs = [
+      "CEO APPOINTED: Mr. MEN assigned Chief Executive Officer of Corporate Strategy.",
+      "DIRECTOR APPOINTED: Mr. SENG CHHAT assigned Director of Corporate Operations.",
+      "APPOINTMENT VERIFIED: Mr. HUOKAING THARA assigned Chief Cybersecurity Officer & Head of Marketing.",
+      "EXECUTIVE DECREE: Signed by Mr. HUO & Board of Directors of HUOKAING THARA BANK.",
+      "SECURITY MATRIX: Cyber defense and digital banking encryption initialized."
+    ];
+    const randomLog = logs[Math.floor(Math.random() * logs.length)];
+    const item = document.createElement("li");
+    item.innerHTML = `<span style="color:var(--neon-gold)">[${new Date().toLocaleTimeString()}]</span> <strong>${randomLog}</strong>`;
+    feedList.insertBefore(item, feedList.firstChild);
+    if (feedList.children.length > 5) feedList.removeChild(feedList.lastChild);
+  }, 4500);
+}
+
+// =================================================================
+// SECURITY PROTECTIONS
+// =================================================================
+document.addEventListener('contextmenu', e => { e.preventDefault(); return false; });
+document.addEventListener('keydown', e => {
+  if (['F12', 'KeyI', 'KeyU', 'KeyS'].includes(e.code) || (e.ctrlKey && ['u','s','i'].includes(e.key))) {
+    e.preventDefault();
+    return false;
+  }
+}, true);
